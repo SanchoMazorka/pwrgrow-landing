@@ -16,8 +16,8 @@
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:title" content="Pwrgrow — Marketing Digital"/>
 <meta name="twitter:description" content="Google Ads, Meta Ads, SEO y consultoría para hacer crecer tu empresa."/>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Anybody:wght@400;700;800&amp;family=Hanken+Grotesk:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<script src="3.4.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <script id="tailwind-config">
   tailwind.config = {
@@ -91,24 +91,24 @@
           gutter: "24px"
         },
         fontFamily: {
-          display: ["Anybody", "sans-serif"],
-          headline: ["Anybody", "sans-serif"],
-          label: ["Hanken Grotesk", "sans-serif"],
-          body: ["Hanken Grotesk", "sans-serif"],
-          "headline-xl-mobile": ["Anybody", "sans-serif"],
-          "headline-xl": ["Anybody", "sans-serif"],
-          "label-bold": ["Hanken Grotesk", "sans-serif"],
-          "display-lg-mobile": ["Anybody", "sans-serif"],
-          "display-lg": ["Anybody", "sans-serif"],
-          "body-lg": ["Hanken Grotesk", "sans-serif"],
-          "body-md": ["Hanken Grotesk", "sans-serif"]
+          display: ["Space Grotesk", "sans-serif"],
+          headline: ["Space Grotesk", "sans-serif"],
+          label: ["Inter", "sans-serif"],
+          body: ["Inter", "sans-serif"],
+          "headline-xl-mobile": ["Space Grotesk", "sans-serif"],
+          "headline-xl": ["Space Grotesk", "sans-serif"],
+          "label-bold": ["Inter", "sans-serif"],
+          "display-lg-mobile": ["Space Grotesk", "sans-serif"],
+          "display-lg": ["Space Grotesk", "sans-serif"],
+          "body-lg": ["Inter", "sans-serif"],
+          "body-md": ["Inter", "sans-serif"]
         },
         fontSize: {
           "headline-xl-mobile": ["32px", { lineHeight: "38px", fontWeight: "700" }],
           "headline-xl": ["48px", { lineHeight: "56px", letterSpacing: "-0.01em", fontWeight: "700" }],
           "label-bold": ["14px", { lineHeight: "20px", letterSpacing: "0.05em", fontWeight: "600" }],
-          "display-lg-mobile": ["40px", { lineHeight: "44px", letterSpacing: "-0.02em", fontWeight: "800" }],
-          "display-lg": ["72px", { lineHeight: "80px", letterSpacing: "-0.02em", fontWeight: "800" }],
+          "display-lg-mobile": ["40px", { lineHeight: "44px", letterSpacing: "-0.02em", fontWeight: "700" }],
+          "display-lg": ["72px", { lineHeight: "80px", letterSpacing: "-0.02em", fontWeight: "700" }],
           "body-lg": ["18px", { lineHeight: "28px", fontWeight: "400" }],
           "body-md": ["16px", { lineHeight: "24px", fontWeight: "400" }]
         }
@@ -300,6 +300,34 @@
       will-change: auto;
     }
   }
+
+  /* ====== Unificación pwrGrow: efectos de firma (comunes a ambas landings) ====== */
+  .pwr-progress { position: fixed; top: 0; left: 0; height: 3px; width: 100%; z-index: 60; pointer-events: none; }
+  .pwr-progress i { display: block; height: 100%; width: 0; background: linear-gradient(90deg, #e23d3d, #ff6b6b); box-shadow: 0 0 12px rgba(226,61,61,.65); }
+
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity .7s cubic-bezier(.22,.61,.36,1), transform .7s cubic-bezier(.22,.61,.36,1); }
+  .reveal.in { opacity: 1; transform: none; }
+
+  a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible { outline: 2px solid #e23d3d; outline-offset: 3px; }
+
+  .pwr-shine { position: relative; overflow: hidden; }
+  .pwr-shine::after { content: ""; position: absolute; top: 0; left: -130%; width: 55%; height: 100%; transform: skewX(-18deg); pointer-events: none; background: linear-gradient(100deg, transparent, rgba(255,255,255,.30), transparent); transition: left .65s cubic-bezier(.22,.61,.36,1); }
+  .pwr-shine:hover::after { left: 150%; }
+
+  /* Glow rojo detrás del titular del hero (mismo lenguaje que la otra landing) */
+  #hero-section::before { content: ""; position: absolute; left: 50%; top: 40%; width: 560px; height: 560px; max-width: 80vw; transform: translate(-50%, -50%); border-radius: 50%; background: radial-gradient(circle, rgba(226,61,61,.18), transparent 62%); filter: blur(14px); z-index: 0; pointer-events: none; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; }
+  }
+
+  /* Eyebrow unificado (rayita roja + mayúsculas), igual que la landing de diseño web */
+  .eyebrow { display: inline-flex; align-items: center; gap: 10px; font-family: "Space Grotesk", sans-serif; font-weight: 600; font-size: .78rem; letter-spacing: .18em; text-transform: uppercase; color: #ff6b6b; margin-bottom: 16px; }
+  .eyebrow::before { content: ""; width: 26px; height: 2px; background: #ff6b6b; }
+
+  /* Barra de métricas con acento superior */
+  .pwr-stats-band { position: relative; }
+  .pwr-stats-band::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, #e23d3d, transparent); }
 </style>
 </head>
 <body class="bg-background text-on-background min-h-screen relative overflow-x-hidden font-body-md font-body">
@@ -341,9 +369,7 @@
   </div>
   <div class="relative z-10 max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
     <div class="text-center max-w-5xl mx-auto flex flex-col items-center">
-    <div class="inline-block border border-brand-red text-on-surface rounded-full px-6 py-2 mb-6 md:mb-8 bg-surface-charcoal/50 backdrop-blur-sm shadow-[0_0_20px_rgba(226,61,61,0.6)]">
-      <span class="font-label-bold text-label-bold tracking-wider uppercase">Potencia tu marca con Google Ads y Meta Ads</span>
-    </div>
+    <span class="eyebrow">Potencia tu marca con Google Ads y Meta Ads</span>
     <h1 class="font-display-lg text-display-lg-mobile md:text-display-lg text-text-primary mb-6 leading-tight animate-text">Marketing Digital que <br/>Transformará Tu Negocio para <br/>Siempre</h1>
     <p class="font-body-lg text-body-lg text-on-surface max-w-3xl mb-10">
       Creamos oportunidades de negocio a través de campañas digitales en Meta Ads y Google Ads. Damos a tu empresa la posibilidad de crecer en el mundo digital de la mano de expertos en estrategia, diseño y análisis de datos.
@@ -356,12 +382,21 @@
   </div>
 </header>
 
+<!-- Metrics band -->
+<section class="pwr-stats-band relative z-10 bg-surface-charcoal border-y border-white/10" aria-label="Datos de la agencia">
+  <!-- Cifras de referencia de marca — CONFIRMAR / EDITAR con el cliente. No usar métricas de performance inventadas. -->
+  <div class="pwr-stats max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-8 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+    <div><b class="pwr-stat block font-headline text-3xl md:text-4xl font-bold text-white leading-tight" data-count>12+</b><span class="text-sm text-text-muted font-body-md">años en marketing digital</span></div>
+    <div><b class="pwr-stat block font-headline text-3xl md:text-4xl font-bold text-white leading-tight" data-count>360°</b><span class="text-sm text-text-muted font-body-md">metodología Grow</span></div>
+    <div><b class="pwr-stat block font-headline text-3xl md:text-4xl font-bold text-white leading-tight" data-count>2</b><span class="text-sm text-text-muted font-body-md">plataformas: Google + Meta</span></div>
+    <div><b class="pwr-stat block font-headline text-3xl md:text-4xl font-bold text-white leading-tight" data-count>100%</b><span class="text-sm text-text-muted font-body-md">medible y transparente</span></div>
+  </div>
+</section>
+
 <!-- Services Section -->
 <section class="relative py-20 md:py-24 z-10 bg-background bg-texture-pattern" id="servicios">
   <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop flex flex-col items-center">
-    <div class="inline-block border border-brand-red text-on-surface rounded-full px-6 py-2 mb-8 bg-surface-charcoal/50 backdrop-blur-sm shadow-[0_0_15px_rgba(226,61,61,0.4)]">
-      <span class="font-label-bold text-label-bold tracking-wider uppercase">¿Qué hacemos?</span>
-    </div>
+    <span class="eyebrow">¿Qué hacemos?</span>
     <h2 class="font-headline-xl text-headline-xl-mobile md:text-headline-xl text-text-primary mb-8 md:mb-12 text-center">
       Te damos un servicio integral
     </h2>
@@ -463,9 +498,7 @@
     </g>
   </svg>
   <div class="relative max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop flex flex-col items-center">
-    <div class="inline-block border border-brand-red text-on-surface rounded-full px-6 py-2 mb-8 bg-surface-charcoal/50 backdrop-blur-sm shadow-[0_0_15px_rgba(226,61,61,0.4)]">
-      <span class="font-label-bold text-label-bold tracking-wider uppercase">¿Cómo lo hacemos? Con metodología</span>
-    </div>
+    <span class="eyebrow">¿Cómo lo hacemos? Con metodología</span>
     <h2 class="font-headline-xl text-headline-xl-mobile md:text-headline-xl text-text-primary mb-8 text-center">
       Marketing Grow 360°
     </h2>
@@ -523,9 +556,7 @@
 <section class="relative py-20 md:py-24 z-10 bg-background bg-line-pattern overflow-hidden border-t border-white/5" id="diferenciacion">
   <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
     <div class="flex flex-col items-start">
-      <div class="inline-block border border-brand-red text-on-surface rounded-full px-6 py-2 mb-8 bg-surface-charcoal/50 backdrop-blur-sm shadow-[0_0_15px_rgba(226,61,61,0.4)]">
-        <span class="font-label-bold text-label-bold tracking-wider uppercase">¿Cómo lo hacemos? Somos distintos</span>
-      </div>
+      <span class="eyebrow">¿Cómo lo hacemos? Somos distintos</span>
       <h2 class="font-headline-xl text-headline-xl-mobile md:text-headline-xl text-text-primary mb-8 leading-tight">
         Vamos más allá de ser una simple agencia. Somos arquitectos de crecimiento digital.
       </h2>
@@ -886,12 +917,77 @@
     update();
   }
 
+  function setupProgressBar() {
+    var bar = document.createElement('div');
+    bar.className = 'pwr-progress';
+    var i = document.createElement('i');
+    bar.appendChild(i);
+    document.body.appendChild(bar);
+    var ticking = false;
+    function upd() {
+      var y = window.scrollY;
+      var h = document.documentElement.scrollHeight - window.innerHeight;
+      i.style.width = (h > 0 ? (y / h) * 100 : 0) + '%';
+      ticking = false;
+    }
+    window.addEventListener('scroll', function () { if (ticking) return; ticking = true; requestAnimationFrame(upd); }, { passive: true });
+    upd();
+  }
+
+  function setupReveal() {
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var els = document.querySelectorAll('main section:not(#hero-section) > div');
+    els.forEach(function (el) { el.classList.add('reveal'); });
+    if (reduce || !('IntersectionObserver' in window)) {
+      els.forEach(function (el) { el.classList.add('in'); });
+      return;
+    }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: .12, rootMargin: '0px 0px -6% 0px' });
+    els.forEach(function (el) { io.observe(el); });
+  }
+
+  function setupShine() {
+    var cta = document.querySelector('#hero-section a[href="#contact-section"]');
+    if (cta) cta.classList.add('pwr-shine');
+  }
+
+  function setupCountUp() {
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var band = document.querySelector('.pwr-stats');
+    if (!band) return;
+    function run() {
+      band.querySelectorAll('.pwr-stat[data-count]').forEach(function (b) {
+        var m = b.textContent.trim().match(/^(\d+)([\s\S]*)$/); if (!m) return;
+        var end = +m[1], rest = m[2];
+        if (reduce) { b.textContent = end + rest; return; }
+        var t0 = null;
+        (function step(ts) {
+          if (!t0) t0 = ts;
+          var p = Math.min((ts - t0) / 1100, 1);
+          b.textContent = Math.round(p * end) + rest;
+          if (p < 1) requestAnimationFrame(step);
+        })(performance.now());
+      });
+    }
+    if (!('IntersectionObserver' in window)) { run(); return; }
+    var io = new IntersectionObserver(function (es, obs) {
+      es.forEach(function (e) { if (e.isIntersecting) { run(); obs.disconnect(); } });
+    }, { threshold: .4 });
+    io.observe(band);
+  }
+
   document.addEventListener('DOMContentLoaded', function () {
     animateHeadline(document.querySelector('.animate-text'));
     setupMobileMenu();
     setupFaq();
     setupFormAlert();
     setupHeroParallax();
+    setupProgressBar();
+    setupReveal();
+    setupShine();
+    setupCountUp();
   });
 })();
 </script>
